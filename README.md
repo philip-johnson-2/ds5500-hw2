@@ -28,7 +28,91 @@ Overall, the visualization is successful in displaying the information and is a 
 
 Assessing the relationship between income and life expectancy over time.
 
+### Simple Linear Regression
+
+Initially, I took a look at the relationship between income (gdp per capita) to life expectancy directly. I leveraged a simple linear regression to better understand the relationship between the two variables over time.
+
+#### gdp ~ time
+
+![Screenshot](gdp_vs_year.png)
+
+Clearly their is a positive correlation between year and income (gdp per capita). When looking at the coefficient for year, it suggests that for each year their is a ~$165 increase in GDP
+
+
+#### life expectancy ~ time
+
+![Screenshot](life_expectancy_vs_year.png)
+
+The coefficient for life expectancy suggests that life expectancy increases by .27 years for each year passed.
+
+### Multivariate Regression
+
+For comparing all three variables at once, I leveraged mutlivariate regression.
+
+
+#### life expectancy ~ gdp + time
+
+| Variable  |      Coefficients    | 
+|----------|:-------------:|
+| Year |  .215447
+| GDP Per Capita |   .000326   
+
+The coefficients from the model suggest that for each year incresae life expectancy increases by .22 years when holding GDP constant 
+
+
+#### gpd ~ life expectancy + time
+
+| Variable  |      Coefficients    | 
+|----------|:-------------:|
+| Year |  -99.92
+| Life Expectancy |   984.90   
+
+The coefficients from the model suggest that GDP decreases by $100 for each year when holding life exptancy constant and a one year increase in life expectancy increases GDP by $984.
+
+
+It is challening to visualize mutlivariate liner regression which is why I chose to use coefficient tables to hel;p show the relationship between the mutliple variables. I used scatter plots to show the relationships between the pairwise comparison of variables. 
+
+
+
 
 ## Problem 5
 
 Assessing the relationship between income and child mortality over time.
+
+#### mortality rate ~ time
+
+![Screenshot](mortality_rate_vs_year.png)
+
+Clearly their is a negative correlation between year and mortality rate (deaths per 1000). When looking at the coefficient for year, it suggests that for each year the mortality rate is decreased by 1.5 deaths per 1000.
+
+
+
+### Multivariate Regression
+
+For comparing all three variables at once, I leveraged mutlivariate regression.
+
+
+#### mortality rate ~ gdp + time
+
+| Variable  |      Coefficients    | 
+|----------|:-------------:|
+| Year |  -1.283829
+| GDP Per Capita |   -0.001289   
+
+The coefficients from the model suggest that for each year incresae mortality rate decreases by 1.28 deaths per thousand.
+
+
+#### gpd ~ mortality rate + time
+
+| Variable  |      Coefficients    | 
+|----------|:-------------:|
+| Year |  -121.922741
+| Mortality Rate |   -186.639764  
+
+The coefficents table suggests that for each year increase, the mean GDP increases by $122 holding the child mortality rate constant.
+
+ A unit increase in child mortality (death per 1,000 live births) decreases the mean GDP by $187 holding time constant.
+
+
+
+Some of the challenges with the dataset we are leveraging in both problems is the nature of the data across countries. We have not accounted for the drastic differences in both income and mortality rates across countries that can skew the data. When looking at the data over time, their tends to be time periods in which their are dramatic changes in teh mortality rate and life expectancy, like due to modernized medicine and other advances in sanitation, etc. These advances could impact how the data is being interpreted and creating either stronger or weaker correlation between variables when time is introduced as a variable. We are also aggregating data across countries that have very different outcomes which may not be comparable. It may make sense to control or normalize based on how advanced a country is to remove extremes on both ends. 
