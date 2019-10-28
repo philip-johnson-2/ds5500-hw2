@@ -113,8 +113,11 @@ The coefficents table suggests that for each year increase, the mean GDP increas
 
  A unit increase in child mortality (death per 1,000 live births) decreases the mean GDP by $187 holding time constant.
 
-
+### Dataset Challenges
 
 Some of the challenges with the dataset we are leveraging in both problems is the nature of the data across countries. We have not accounted for the drastic differences in both income and mortality rates across countries that can skew the data. When looking at the data over time, their tends to be time periods in which their are dramatic changes in teh mortality rate and life expectancy, like due to modernized medicine and other advances in sanitation, etc. These advances could impact how the data is being interpreted and creating either stronger or weaker correlation between variables when time is introduced as a variable. We are also aggregating data across countries that have very different outcomes which may not be comparable. It may make sense to control or normalize based on how advanced a country is to remove extremes on both ends. 
+
+
+### Autocorrelation of Time Series
 
 One of the assumptions of regression analysis is that data has no autocorrelation. The time series nature of this data violates that assumption as the time series is linearly related to a lagged version of itself. Autocorrelation increases the variance of the coefficient estimates and hence deflates the size of estimated standard error. It is logical that year is autocorrelated with the other variables we are looking at given that income, mortality rate, and life expectancy are all correlated to time given advances in medicine and quality of life. The autocorrelation makes our coefficient estimates less reliable and we could need to control for autocorrelation to be more confident that our models could accurately measure the relationship between variables. 
